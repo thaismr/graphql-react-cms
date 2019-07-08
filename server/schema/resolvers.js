@@ -1,6 +1,16 @@
 const resolvers = {
   Query: {
-    pages: () => pages,
+    getPages: () => pages,
+    getPosts: () => posts,
+    getAuthors: () => authors,
+    getPublications: () => Publication
+  },
+  Publication: {
+    __resolveType(obj, ctx, info) {
+      if (obj.title) return 'Page'
+      if (obj.headline) return 'Post'
+      return null
+    },
   },
 }
 

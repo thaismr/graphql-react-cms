@@ -14,7 +14,12 @@ const pages = [
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: ({ req }) => {
+    const token = req.headers.authorization || ''
+    const user = getUser(token)
+    return { user }
+  }
 })
 
 module.exports = server
