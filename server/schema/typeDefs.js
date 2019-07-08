@@ -38,7 +38,7 @@ const typeDefs = gql`
   }
 
   type Author {
-    id: ID!
+    id: ID
     name: String!
     role: UserRole
     pages: [Page]
@@ -54,7 +54,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addAuthor(name: String): Author
+    addAuthor(name: String!): Author
     addPage(page: PageInput): PageAddResponse!
   }
 `

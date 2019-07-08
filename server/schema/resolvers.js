@@ -1,16 +1,23 @@
+const { Author } = require('../models/author');
+
 const resolvers = {
   Query: {
+    myself: (parent, args, { user }, info) => user,
     getPages: () => pages,
     getPosts: () => posts,
     getAuthors: () => authors,
     getPublications: () => Publication
   },
   Mutation: {
-    async addAuthor(parent, args, ctx, info) {
-      const emailTaken = await author.email
-      if (emailTaken) throw new Error('Email already taken.')
-      return author
-    }
+    addAuthor: async (parent, { name }, { db }, info) => {
+      try {
+        return (await new Author({ name })).save()
+      } catch(e) {
+        return e.message
+      }
+//      const emailTaken = await author.email
+//      if (emailTaken) throw new Error('Email already taken.')
+    },
   },
   Publication: {
     __resolveType(obj, ctx, info) {
