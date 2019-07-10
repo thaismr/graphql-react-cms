@@ -9,6 +9,19 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "API",
+        // This is the field under which it's accessible
+        fieldName: "api",
+        // URL to query from
+        url: "https://api.graphcms.com/simple/v1/swapi",
+        // refetch interval in seconds
+        refetchInterval: 60,
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
@@ -25,8 +38,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     `gatsby-transformer-sharp`,

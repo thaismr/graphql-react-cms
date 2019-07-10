@@ -1,5 +1,5 @@
 ---
-title: Ayvu - Gamified Language Learning
+title: Hero
 date: '2019-07-10'
 ---
 
