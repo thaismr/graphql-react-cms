@@ -13,7 +13,7 @@ const typeDefs = gql`
 
   type Page {
     id: ID!
-    author: Author!
+    author: User!
     title: String!
     body: String!
   }
@@ -32,29 +32,42 @@ const typeDefs = gql`
 
   type Post {
     id: ID!
-    author: Author!
+    author: User!
     headline: String!
     body: String!
   }
 
-  type Author {
+  type User {
     id: ID
     name: String!
+    email: String!
+    password: String!
     role: UserRole
     pages: [Page]
     posts: [Post]
   }
 
+  type File {
+    id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+  }
+
   type Query {
-    myself: Author
+    myself: User
+    uploads: [File]
     getPages: [Page]
     getPosts: [Post]
-    getAuthors: [Author]
+    getAuthors: [User]
     getPublications(author: ID): [Publication]
   }
 
   type Mutation {
-    addAuthor(name: String!): Author
+    login(email: String!, password: String!): User
+    addUser(name: String!, email: String!, password: String!): User
+    singleUpload(file: Upload!): File!
+    multipleUpload(files: [Upload!]!): [File!]!
     addPage(page: PageInput): PageAddResponse!
   }
 `

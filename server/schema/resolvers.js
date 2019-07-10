@@ -1,4 +1,5 @@
-const { Author } = require('../models/author');
+const { User } = require('../models/user')
+const AuthService = require('../auth')
 
 const resolvers = {
   Query: {
@@ -9,11 +10,14 @@ const resolvers = {
     getPublications: () => Publication
   },
   Mutation: {
-    addAuthor: async (parent, { name }, { db }, info) => {
+    login: async (parent, { email, password }, { req }, info) => {
+      return await AuthService.login({ email, password, req })
+    },
+    addUser: async (parent, { name, email, password }, ctx, info) => {
       try {
-        return (await new Author({ name })).save()
+        return (await new User({ name, email, password })).save()
       } catch(e) {
-        return e.message
+        throw new Error('Error: ' + e.message)
       }
 //      const emailTaken = await author.email
 //      if (emailTaken) throw new Error('Email already taken.')

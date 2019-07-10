@@ -2,6 +2,8 @@ const { ApolloServer } = require('apollo-server')
 const { RedisCache } = require('apollo-server-cache-redis')
 const express = require('express')
 const mongoose = require('mongoose')
+const passport = require('passport')
+LocalStrategy = require('passport-local').Strategy
 //const MongoStore = require('connect-mongo')(session)
 const { typeDefs, resolvers } = require('./schema')
 
@@ -26,16 +28,23 @@ const db = mongoose.connection
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req }) => ({
-    db: await db,
-    req: req
-  }),
-/*
- context: ({ req }) => {
-    const token = req.headers.authorization || ''
-    const user = getUser(token)
+  uploads: {
+    maxFileSize: 1000000, // 1 MB
+    maxFiles: 5
+  },
+  context: async ({ req }) => {
+    const auth = (req.headers && req.headers.authorization) || ''
+    const email = new Buffer(auth, 'base64').toString('ascii')
+    const { User } = require('./models/user')
+    //req.user = await passport.authenticate('local')
+    //const token = req.headers.authorization || ''
+    //const { headers } = req
+    const user = await User.findOne({ email: email })
+    console.log({ user })
     return { user }
   },
+/*
+
   cache: new RedisCache({
     // Options are passed through to the Redis client
     sentinels: [
@@ -45,11 +54,11 @@ const server = new ApolloServer({
     ],
     name: 'masterredis',
     password: 'mysamplepass',
-    db: 1
+    db: 0
   }), */
 })
 
-const app = express();
+//const app = express();
 //server.applyMiddleware({ app });
 
 module.exports = server
