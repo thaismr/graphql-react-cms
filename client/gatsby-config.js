@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Ayvu - Gamified Language Learning`,
     description: `Learn new languages while playing games, exploring a virtual world and meeting new people and characters.`,
-    author: `@gatsbyjs`,
+    author: `@thais.mendes.ramalho`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
