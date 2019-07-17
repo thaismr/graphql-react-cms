@@ -8,23 +8,36 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import NavShadow from "./navshadow"
 import { useStaticQuery, Link, graphql } from "gatsby"
 
 import Header from "./header"
 //import "./layout.css"
 
+const Main = styled.div`
+  background: #faf6eb;
+`
 const Div = styled.div`
+  max-width: 1200px;
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0px 1.0875rem 1.45rem;
-  padding-top: 0;
 `
-
+const Footer = styled.div`
+  height: 55px;
+  margin: 0 auto;
+  background: #faf6eb;
+  border-radius: 0 0 50px 50px;
+`
+const Copyright = styled.div`
+  float: left;
+  margin: .2rem 0 0 3rem;
+`
 const Ul = styled.ul`
+  float: right;
    list-style: none;
-   float: right;
+   display: flex;
+   align-content: space-around;
+   margin: .2rem 3rem 0 0;
 `
-
 const Li = styled.li`
   display: inline-block;
   margin-right: 1rem;
@@ -51,14 +64,20 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Div className={`layout-wrapper`}>
-        <main>{children}</main>
-        <footer>
-        <Ul className={`list-link`}>
-          <ListLink to="/">Home</ListLink>
-          <ListLink to="/about/">About</ListLink>
-        </Ul>
-          © {new Date().getFullYear()}
-        </footer>
+        <Main>{children}</Main>
+        <Footer>
+          <NavShadow />
+          <Ul className={`list-link`}>
+            <ListLink to="/">Home</ListLink>
+            <ListLink to="/about/">About</ListLink>
+            <ListLink to="/news/">News</ListLink>
+            <ListLink to="/media/">Media</ListLink>
+            <ListLink to="/contact/">Contact</ListLink>
+          </Ul>
+          <Copyright>
+            © {new Date().getFullYear()} Ay.vu
+          </Copyright>
+        </Footer>
       </Div>
     </>
   )

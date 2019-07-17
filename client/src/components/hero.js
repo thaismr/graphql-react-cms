@@ -28,15 +28,8 @@ const Hero = () => {
 
   return (
     <>
-      <div>
-        <H1>
-        {data.allMarkdownRemark.nodes[0].frontmatter.title}
-        </H1>
-          <div key={data.allMarkdownRemark.nodes[0].id}>
-            <H3>
-             <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.nodes[0].html }} />
-            </H3>
-          </div>
+      <div key={data.allMarkdownRemark.nodes[0].id}>
+        <div dangerouslySetInnerHTML={{ __html: data.allMarkdownRemark.nodes[0].html }} />
       </div>
     </>
   )

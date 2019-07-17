@@ -1,4 +1,16 @@
 import React from "react"
+
+const Pages = ({ data }) => (
+  <div>
+    <h1>Site Pages</h1>
+  </div>
+)
+
+export default Pages
+
+
+/*
+
 import { graphql } from "gatsby"
 import PagesList from "../components/pagesList"
 
@@ -23,3 +35,4 @@ export const query = graphql`
     }
   }
 `
+*/

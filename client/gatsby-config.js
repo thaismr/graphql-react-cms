@@ -1,6 +1,8 @@
+const { POSTGRES_URI } = require('../private/private')
+
 module.exports = {
   siteMetadata: {
-    title: `Ayvu - Gamified Language Learning`,
+    title: `Ay.vu - Gamified Language Learning`,
     description: `Learn new languages while playing games, exploring a virtual world and meeting new people and characters.`,
     author: `@thais.mendes.ramalho`,
   },
@@ -8,6 +10,14 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-source-pg',
+      options: {
+        connectionString: POSTGRES_URI,
+        schema: 'app_public',
+      },
+    },
+    /*
     {
       resolve: "gatsby-source-graphql",
       options: {
@@ -21,6 +31,7 @@ module.exports = {
         refetchInterval: 60,
       },
     },
+    */
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -47,8 +58,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `ayvu-website`,
+        short_name: `ayvuweb`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

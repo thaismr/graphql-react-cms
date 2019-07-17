@@ -1,3 +1,9 @@
+# Third-party images
+src/images/
+
+# private data
+private/
+
 # Logs
 logs
 *.log
