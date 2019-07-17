@@ -29,7 +29,6 @@ const IndexPage = () => (
     </Div>
     <Wrapper>
       <Hero />
-      <Link to="/posts/">Posts</Link>
     </Wrapper>
   </Layout>
 )
