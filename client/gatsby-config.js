@@ -1,4 +1,6 @@
-const { POSTGRES_URI } = require('../private/private')
+//const private = require('./private/private')
+
+//const { POSTGRES_URI } = private
 
 module.exports = {
   siteMetadata: {
@@ -10,6 +12,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
+    /*
     {
       resolve: 'gatsby-source-pg',
       options: {
@@ -17,7 +20,7 @@ module.exports = {
         schema: 'app_public',
       },
     },
-    /*
+    */
     {
       resolve: "gatsby-source-graphql",
       options: {
@@ -26,12 +29,11 @@ module.exports = {
         // This is the field under which it's accessible
         fieldName: "api",
         // URL to query from
-        url: "https://api.graphcms.com/simple/v1/swapi",
+        url: "http://localhost:5000/graphiql",
         // refetch interval in seconds
-        refetchInterval: 60,
+        refetchInterval: 600,
       },
     },
-    */
     {
       resolve: `gatsby-plugin-typography`,
       options: {

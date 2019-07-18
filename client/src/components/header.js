@@ -85,8 +85,8 @@ const Header = ({ siteTitle }) => (
       <Ul className={`list-link`}>
         <ListLink to="/about/">About</ListLink>
         <ListLink to="/news/">News</ListLink>
-        <ListLink to="/">Media</ListLink>
-        <ListLink to="/">Contact</ListLink>
+        <ListLink to="/media/">Media</ListLink>
+        <ListLink to="/contact/">Contact</ListLink>
       </Ul>
     </Div>
     <NavShadow />
