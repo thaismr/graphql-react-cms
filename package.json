@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/thaismr/graphql-react-cms#readme",
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "apollo-server": "^2.25.3",
