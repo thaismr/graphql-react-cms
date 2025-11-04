@@ -29,8 +29,8 @@
     "apollo-server": "^2.25.3",
     "apollo-server-cache-redis": "^1.0.0",
     "connect-mongo": "^3.0.0",
-    "express": "^4.17.3",
-    "express-session": "^1.18.2",
+    "express": "^4.21.2",
+    "express-session": "^1.16.2",
     "graphql": "^14.4.2",
     "mongoose": "^5.13.15"
   }
